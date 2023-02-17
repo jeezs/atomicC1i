@@ -391,3 +391,76 @@ end
 # `#{a}.style.left='500px'`
 
 # t = text({ data: :hello, visual: { size: "50vw" }, height: :auto, width: :auto })
+
+
+
+
+########################
+def experiments
+  #   `
+  #   // This const is used to store and get all atome created canvas by id
+  # const Atome_canvas={}
+  # `
+
+  `
+
+var div = document.getElementById('view');
+
+var canvas = document.createElement("canvas");
+canvas.width = div.clientWidth;
+canvas.height = div.clientHeight;
+
+canvas_id='_canvas';
+canvas.id = canvas_id;
+div.appendChild(canvas);
+var img = new Image();
+img.src = './medias/images/3D.jpg';
+img.onload = function() {
+    var fab_canvas = new fabric.Canvas(canvas_id);
+//fab_canvas.set('id', 'myCanvasId');
+Atome_canvas.myCanvasId=fab_canvas
+    var image = new fabric.Image(img);
+image.hasControls = false; // hide the helpers
+image.selectable = false; // make the image unselectable
+image.hoverCursor = 'default'; // Change the cursor
+image.evented = false;// Deactivate the lasso
+fab_canvas.selection = false //make the canvas unselectable (no lasso possible on the whole canvas)
+ image.id= 'myImageId';
+    fab_canvas.add(image);
+  fab_canvas.getObjects().forEach(function(o) {
+          if(o.id == 'myImageId') {
+              //console.log(o.id)
+o.filters.push(new fabric.Image.filters.BlendColor({color: 'red'}));
+o.applyFilters();
+          }
+      })
+}
+
+
+setTimeout(() => {
+
+var getted_canvas = Atome_canvas.myCanvasId
+var rect = new fabric.Rect({
+  left: 100,
+  top: 100,
+  fill: 'blue',
+  width: 20,
+  height: 20,
+  angle: 45
+
+});
+
+getted_canvas.add(rect);
+   getted_canvas.getObjects().forEach(function(o) {
+          if(o.id == 'myImageId') {
+delete o.filters[0]; // delete the previous filter
+
+o.filters.push(new fabric.Image.filters.BlendColor({color: 'pink'}));
+o.applyFilters();
+          }
+      })
+
+}, 2000)
+
+`
+end
