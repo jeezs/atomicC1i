@@ -351,27 +351,27 @@ def clear_page
   sections.cell(2).unbind(:tap)
   sections.cell(3).unbind(:tap)
   # sections.cell(4).unbind(:tap)
-  sections.cell(0).children.each do |child|
+  sections.cell(0).materials.each do |child|
     unless child.to_s == :rubriques
       grab(child).delete(true) if grab(child)
     end
   end
-  sections.cell(1).children.each do |child|
+  sections.cell(1).materials.each do |child|
     unless child.to_s == :rubriques
       grab(child).delete(true) if grab(child)
     end
   end
-  sections.cell(2).children.each do |child|
+  sections.cell(2).materials.each do |child|
     unless child.to_s == :rubriques
       grab(child).delete(true) if grab(child)
     end
   end
-  sections.cell(3).children.each do |child|
+  sections.cell(3).materials.each do |child|
     unless child.to_s == :rubriques
       grab(child).delete(true) if grab(child)
     end
   end
-  # sections.cell(4).children.each do |child|
+  # sections.cell(4).materials.each do |child|
   #   unless child.to_s == :rubriques
   #     grab(child).delete(true) if grab(child)
   #   end
@@ -488,6 +488,6 @@ home
 # b=box({id: :content})
 # m=matrix(style[:rubriques])
 #
-# m.cell(0).children.each do |child|
+# m.cell(0).materials.each do |child|
 #   alert child
 # end
