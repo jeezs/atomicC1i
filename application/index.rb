@@ -462,6 +462,7 @@ def section_links(link1 = :page1, link2 = :page, link3 = :page3, link4 = :page4,
   grab(:rubriques).cell(3).touch(true) do
     send(link4)
   end
+
   # grab(:rubriques).cell(4).touch(true) do
   #   send(link5)
   # end
